@@ -3,11 +3,20 @@
  */
 package org.mule.extension.mulechain.internal.extension;
 
+import org.mule.extension.mulechain.internal.connection.provider.AnthropicConnectionProvider;
+import org.mule.extension.mulechain.internal.connection.provider.AzureOpenAIConnectionProvider;
+import org.mule.extension.mulechain.internal.connection.provider.GeminiAIConnectionProvider;
+import org.mule.extension.mulechain.internal.connection.provider.GroqOpenAIConnectionProvider;
+import org.mule.extension.mulechain.internal.connection.provider.HuggingFaceConnectionProvider;
+import org.mule.extension.mulechain.internal.connection.provider.MistralAIConnectionProvider;
+import org.mule.extension.mulechain.internal.connection.provider.OllamaConnectionProvider;
+import org.mule.extension.mulechain.internal.connection.provider.OpenAIConnectionProvider;
 import org.mule.extension.mulechain.internal.error.MuleChainErrorType;
 import org.mule.runtime.api.meta.Category;
 import org.mule.runtime.extension.api.annotation.Extension;
 import org.mule.extension.mulechain.internal.config.LangchainLLMConfiguration;
 import org.mule.runtime.extension.api.annotation.Configurations;
+import org.mule.runtime.extension.api.annotation.connectivity.ConnectionProviders;
 import org.mule.runtime.extension.api.annotation.dsl.xml.Xml;
 import org.mule.runtime.extension.api.annotation.error.ErrorTypes;
 import org.mule.runtime.extension.api.annotation.license.RequiresEnterpriseLicense;
@@ -23,7 +32,11 @@ import static org.mule.sdk.api.meta.JavaVersion.JAVA_8;
  */
 @Xml(prefix = "ms-aichain")
 @Extension(name = "MuleSoft AI Chain", category = Category.SELECT)
-@Configurations({LangchainLLMConfiguration.class})
+//@Configurations({LangchainLLMConfiguration.class})
+@ConnectionProviders({OpenAIConnectionProvider.class, GroqOpenAIConnectionProvider.class, MistralAIConnectionProvider.class,
+    OllamaConnectionProvider.class, HuggingFaceConnectionProvider.class, GeminiAIConnectionProvider.class,
+    AnthropicConnectionProvider.class,
+    AzureOpenAIConnectionProvider.class})
 @RequiresEnterpriseLicense(allowEvaluationLicense = true)
 @ErrorTypes(MuleChainErrorType.class)
 @JavaVersionSupport({JAVA_8, JAVA_11, JAVA_17})
