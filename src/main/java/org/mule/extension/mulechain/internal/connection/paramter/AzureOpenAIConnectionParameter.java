@@ -11,7 +11,6 @@ import org.mule.runtime.extension.api.annotation.values.OfValues;
 public class AzureOpenAIConnectionParameter extends BaseConnectionParameter {
 
   @Parameter
-  @Password
   @Placement(order = 1)
   @Expression(ExpressionSupport.SUPPORTED)
   private String endpoint;
@@ -29,7 +28,6 @@ public class AzureOpenAIConnectionParameter extends BaseConnectionParameter {
   private String modelName;
 
   @Parameter
-  @Password
   @Placement(order = 4)
   @Expression(ExpressionSupport.SUPPORTED)
   private String deploymentName;
