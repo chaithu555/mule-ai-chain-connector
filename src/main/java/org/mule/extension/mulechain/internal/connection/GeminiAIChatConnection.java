@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 
 import static java.time.Duration.ofSeconds;
 
-public class GeminiAIConnection implements Connection {
+public class GeminiAIChatConnection implements ChatConnection {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(GeminiAIConnection.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(GeminiAIChatConnection.class);
   private ChatLanguageModel model;
   private final GeminiAIConnectionParameter geminiAIConnectionParameter;
 
-  public GeminiAIConnection(GeminiAIConnectionParameter geminiAIConnectionParameter) {
+  public GeminiAIChatConnection(GeminiAIConnectionParameter geminiAIConnectionParameter) {
     this.geminiAIConnectionParameter = geminiAIConnectionParameter;
   }
 

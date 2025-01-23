@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 
 import static java.time.Duration.ofSeconds;
 
-public class OllamaConnection implements Connection {
+public class OllamaChatConnection implements ChatConnection {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(OllamaConnection.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(OllamaChatConnection.class);
   private ChatLanguageModel model;
   private final OllamaConnectionParameter ollamaConnectionParameter;
 
-  public OllamaConnection(OllamaConnectionParameter ollamaConnectionParameter) {
+  public OllamaChatConnection(OllamaConnectionParameter ollamaConnectionParameter) {
     this.ollamaConnectionParameter = ollamaConnectionParameter;
   }
 

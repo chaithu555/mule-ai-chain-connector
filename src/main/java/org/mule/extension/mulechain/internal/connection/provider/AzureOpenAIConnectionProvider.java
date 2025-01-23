@@ -1,6 +1,6 @@
 package org.mule.extension.mulechain.internal.connection.provider;
 
-import org.mule.extension.mulechain.internal.connection.AzureOpenAIConnection;
+import org.mule.extension.mulechain.internal.connection.AzureOpenAIChatConnection;
 import org.mule.extension.mulechain.internal.connection.paramter.AzureOpenAIConnectionParameter;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @Alias("azureOpenAI")
 @DisplayName("AzureOpenAI")
-public class AzureOpenAIConnectionProvider implements CachedConnectionProvider<AzureOpenAIConnection> {
+public class AzureOpenAIConnectionProvider implements CachedConnectionProvider<AzureOpenAIChatConnection> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AzureOpenAIConnectionProvider.class);
 
@@ -21,9 +21,9 @@ public class AzureOpenAIConnectionProvider implements CachedConnectionProvider<A
   private AzureOpenAIConnectionParameter azureOpenAIConnectionParameter;
 
   @Override
-  public AzureOpenAIConnection connect() throws ConnectionException {
+  public AzureOpenAIChatConnection connect() throws ConnectionException {
     try {
-      AzureOpenAIConnection azureOpenAIConnection = new AzureOpenAIConnection(azureOpenAIConnectionParameter);
+      AzureOpenAIChatConnection azureOpenAIConnection = new AzureOpenAIChatConnection(azureOpenAIConnectionParameter);
       azureOpenAIConnection.connect();
       return azureOpenAIConnection;
     } catch (ConnectionException e) {
@@ -34,7 +34,7 @@ public class AzureOpenAIConnectionProvider implements CachedConnectionProvider<A
   }
 
   @Override
-  public void disconnect(AzureOpenAIConnection azureOpenAIConnection) {
+  public void disconnect(AzureOpenAIChatConnection azureOpenAIConnection) {
     try {
       azureOpenAIConnection.disconnect();
     } catch (Exception e) {
@@ -43,7 +43,7 @@ public class AzureOpenAIConnectionProvider implements CachedConnectionProvider<A
   }
 
   @Override
-  public ConnectionValidationResult validate(AzureOpenAIConnection azureOpenAIConnection) {
+  public ConnectionValidationResult validate(AzureOpenAIChatConnection azureOpenAIConnection) {
     try {
       if (azureOpenAIConnection.isValid()) {
         return ConnectionValidationResult.success();

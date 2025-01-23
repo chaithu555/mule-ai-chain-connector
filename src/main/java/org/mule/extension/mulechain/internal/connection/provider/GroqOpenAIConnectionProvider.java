@@ -1,6 +1,6 @@
 package org.mule.extension.mulechain.internal.connection.provider;
 
-import org.mule.extension.mulechain.internal.connection.GroqAIConnection;
+import org.mule.extension.mulechain.internal.connection.GroqAIChatConnection;
 import org.mule.extension.mulechain.internal.connection.paramter.GroqAIConnectionParameter;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @Alias("groqAI")
 @DisplayName("GroqOpenAI")
-public class GroqOpenAIConnectionProvider implements CachedConnectionProvider<GroqAIConnection> {
+public class GroqOpenAIConnectionProvider implements CachedConnectionProvider<GroqAIChatConnection> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(GroqOpenAIConnectionProvider.class);
 
@@ -21,9 +21,9 @@ public class GroqOpenAIConnectionProvider implements CachedConnectionProvider<Gr
   private GroqAIConnectionParameter groqAIConnectionParameter;
 
   @Override
-  public GroqAIConnection connect() throws ConnectionException {
+  public GroqAIChatConnection connect() throws ConnectionException {
     try {
-      GroqAIConnection groqAIConnection = new GroqAIConnection(groqAIConnectionParameter);
+      GroqAIChatConnection groqAIConnection = new GroqAIChatConnection(groqAIConnectionParameter);
       groqAIConnection.connect();
       return groqAIConnection;
     } catch (ConnectionException e) {
@@ -34,7 +34,7 @@ public class GroqOpenAIConnectionProvider implements CachedConnectionProvider<Gr
   }
 
   @Override
-  public void disconnect(GroqAIConnection groqAIConnection) {
+  public void disconnect(GroqAIChatConnection groqAIConnection) {
     try {
       groqAIConnection.disconnect();
     } catch (Exception e) {
@@ -43,7 +43,7 @@ public class GroqOpenAIConnectionProvider implements CachedConnectionProvider<Gr
   }
 
   @Override
-  public ConnectionValidationResult validate(GroqAIConnection groqAIConnection) {
+  public ConnectionValidationResult validate(GroqAIChatConnection groqAIConnection) {
     try {
       if (groqAIConnection.isValid()) {
         return ConnectionValidationResult.success();

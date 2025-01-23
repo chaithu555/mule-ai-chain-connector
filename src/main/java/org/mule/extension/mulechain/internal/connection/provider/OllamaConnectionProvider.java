@@ -1,6 +1,6 @@
 package org.mule.extension.mulechain.internal.connection.provider;
 
-import org.mule.extension.mulechain.internal.connection.OllamaConnection;
+import org.mule.extension.mulechain.internal.connection.OllamaChatConnection;
 import org.mule.extension.mulechain.internal.connection.paramter.OllamaConnectionParameter;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @Alias("ollama")
 @DisplayName("Ollama")
-public class OllamaConnectionProvider implements CachedConnectionProvider<OllamaConnection> {
+public class OllamaConnectionProvider implements CachedConnectionProvider<OllamaChatConnection> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(OllamaConnectionProvider.class);
 
@@ -21,9 +21,9 @@ public class OllamaConnectionProvider implements CachedConnectionProvider<Ollama
   private OllamaConnectionParameter ollamaConnectionParameter;
 
   @Override
-  public OllamaConnection connect() throws ConnectionException {
+  public OllamaChatConnection connect() throws ConnectionException {
     try {
-      OllamaConnection ollamaConnection = new OllamaConnection(ollamaConnectionParameter);
+      OllamaChatConnection ollamaConnection = new OllamaChatConnection(ollamaConnectionParameter);
       ollamaConnection.connect();
       return ollamaConnection;
     } catch (ConnectionException e) {
@@ -34,7 +34,7 @@ public class OllamaConnectionProvider implements CachedConnectionProvider<Ollama
   }
 
   @Override
-  public void disconnect(OllamaConnection ollamaConnection) {
+  public void disconnect(OllamaChatConnection ollamaConnection) {
     try {
       ollamaConnection.disconnect();
     } catch (Exception e) {
@@ -43,7 +43,7 @@ public class OllamaConnectionProvider implements CachedConnectionProvider<Ollama
   }
 
   @Override
-  public ConnectionValidationResult validate(OllamaConnection ollamaConnection) {
+  public ConnectionValidationResult validate(OllamaChatConnection ollamaConnection) {
     try {
       if (ollamaConnection.isValid()) {
         return ConnectionValidationResult.success();

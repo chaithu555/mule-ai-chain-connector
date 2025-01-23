@@ -1,6 +1,6 @@
 package org.mule.extension.mulechain.internal.connection.provider;
 
-import org.mule.extension.mulechain.internal.connection.GeminiAIConnection;
+import org.mule.extension.mulechain.internal.connection.GeminiAIChatConnection;
 import org.mule.extension.mulechain.internal.connection.paramter.GeminiAIConnectionParameter;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @Alias("geminiAI")
 @DisplayName("GeminiAI")
-public class GeminiAIConnectionProvider implements CachedConnectionProvider<GeminiAIConnection> {
+public class GeminiAIConnectionProvider implements CachedConnectionProvider<GeminiAIChatConnection> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(GeminiAIConnectionProvider.class);
 
@@ -21,9 +21,9 @@ public class GeminiAIConnectionProvider implements CachedConnectionProvider<Gemi
   private GeminiAIConnectionParameter geminiAIConnectionParameter;
 
   @Override
-  public GeminiAIConnection connect() throws ConnectionException {
+  public GeminiAIChatConnection connect() throws ConnectionException {
     try {
-      GeminiAIConnection geminiAIConnection = new GeminiAIConnection(geminiAIConnectionParameter);
+      GeminiAIChatConnection geminiAIConnection = new GeminiAIChatConnection(geminiAIConnectionParameter);
       geminiAIConnection.connect();
       return geminiAIConnection;
     } catch (ConnectionException e) {
@@ -34,7 +34,7 @@ public class GeminiAIConnectionProvider implements CachedConnectionProvider<Gemi
   }
 
   @Override
-  public void disconnect(GeminiAIConnection geminiAIConnection) {
+  public void disconnect(GeminiAIChatConnection geminiAIConnection) {
     try {
       geminiAIConnection.disconnect();
     } catch (Exception e) {
@@ -43,7 +43,7 @@ public class GeminiAIConnectionProvider implements CachedConnectionProvider<Gemi
   }
 
   @Override
-  public ConnectionValidationResult validate(GeminiAIConnection geminiAIConnection) {
+  public ConnectionValidationResult validate(GeminiAIChatConnection geminiAIConnection) {
     try {
       if (geminiAIConnection.isValid()) {
         return ConnectionValidationResult.success();

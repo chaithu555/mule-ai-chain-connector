@@ -1,6 +1,6 @@
 package org.mule.extension.mulechain.internal.connection.provider;
 
-import org.mule.extension.mulechain.internal.connection.HuggingFaceConnection;
+import org.mule.extension.mulechain.internal.connection.HuggingFaceChatConnection;
 import org.mule.extension.mulechain.internal.connection.paramter.HuggingFaceConnectionParameter;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @Alias("huggingFace")
 @DisplayName("HuggingFace")
-public class HuggingFaceConnectionProvider implements CachedConnectionProvider<HuggingFaceConnection> {
+public class HuggingFaceConnectionProvider implements CachedConnectionProvider<HuggingFaceChatConnection> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(HuggingFaceConnectionProvider.class);
 
@@ -21,9 +21,9 @@ public class HuggingFaceConnectionProvider implements CachedConnectionProvider<H
   private HuggingFaceConnectionParameter huggingFaceConnectionParameter;
 
   @Override
-  public HuggingFaceConnection connect() throws ConnectionException {
+  public HuggingFaceChatConnection connect() throws ConnectionException {
     try {
-      HuggingFaceConnection huggingFaceConnection = new HuggingFaceConnection(huggingFaceConnectionParameter);
+      HuggingFaceChatConnection huggingFaceConnection = new HuggingFaceChatConnection(huggingFaceConnectionParameter);
       huggingFaceConnection.connect();
       return huggingFaceConnection;
     } catch (ConnectionException e) {
@@ -34,7 +34,7 @@ public class HuggingFaceConnectionProvider implements CachedConnectionProvider<H
   }
 
   @Override
-  public void disconnect(HuggingFaceConnection huggingFaceConnection) {
+  public void disconnect(HuggingFaceChatConnection huggingFaceConnection) {
     try {
       huggingFaceConnection.disconnect();
     } catch (Exception e) {
@@ -43,7 +43,7 @@ public class HuggingFaceConnectionProvider implements CachedConnectionProvider<H
   }
 
   @Override
-  public ConnectionValidationResult validate(HuggingFaceConnection huggingFaceConnection) {
+  public ConnectionValidationResult validate(HuggingFaceChatConnection huggingFaceConnection) {
     try {
       if (huggingFaceConnection.isValid()) {
         return ConnectionValidationResult.success();

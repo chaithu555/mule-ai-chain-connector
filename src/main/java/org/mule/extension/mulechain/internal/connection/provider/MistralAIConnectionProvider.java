@@ -1,6 +1,6 @@
 package org.mule.extension.mulechain.internal.connection.provider;
 
-import org.mule.extension.mulechain.internal.connection.MistralAIConnection;
+import org.mule.extension.mulechain.internal.connection.MistralAIChatConnection;
 import org.mule.extension.mulechain.internal.connection.paramter.MistralAIConnectionParameter;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @Alias("mistralAI")
 @DisplayName("MistralAI")
-public class MistralAIConnectionProvider implements CachedConnectionProvider<MistralAIConnection> {
+public class MistralAIConnectionProvider implements CachedConnectionProvider<MistralAIChatConnection> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(MistralAIConnectionProvider.class);
 
@@ -21,9 +21,9 @@ public class MistralAIConnectionProvider implements CachedConnectionProvider<Mis
   private MistralAIConnectionParameter mistralAIConnectionParameter;
 
   @Override
-  public MistralAIConnection connect() throws ConnectionException {
+  public MistralAIChatConnection connect() throws ConnectionException {
     try {
-      MistralAIConnection mistralAIConnection = new MistralAIConnection(mistralAIConnectionParameter);
+      MistralAIChatConnection mistralAIConnection = new MistralAIChatConnection(mistralAIConnectionParameter);
       mistralAIConnection.connect();
       return mistralAIConnection;
     } catch (ConnectionException e) {
@@ -34,7 +34,7 @@ public class MistralAIConnectionProvider implements CachedConnectionProvider<Mis
   }
 
   @Override
-  public void disconnect(MistralAIConnection mistralAIConnection) {
+  public void disconnect(MistralAIChatConnection mistralAIConnection) {
     try {
       mistralAIConnection.disconnect();
     } catch (Exception e) {
@@ -43,7 +43,7 @@ public class MistralAIConnectionProvider implements CachedConnectionProvider<Mis
   }
 
   @Override
-  public ConnectionValidationResult validate(MistralAIConnection mistralAIConnection) {
+  public ConnectionValidationResult validate(MistralAIChatConnection mistralAIConnection) {
     try {
       if (mistralAIConnection.isValid()) {
         return ConnectionValidationResult.success();

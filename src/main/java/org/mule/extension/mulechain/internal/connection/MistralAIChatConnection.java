@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 
 import static java.time.Duration.ofSeconds;
 
-public class MistralAIConnection implements Connection {
+public class MistralAIChatConnection implements ChatConnection {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(MistralAIConnection.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(MistralAIChatConnection.class);
   private ChatLanguageModel model;
   private final MistralAIConnectionParameter mistralAIConnectionParameter;
 
-  public MistralAIConnection(MistralAIConnectionParameter mistralAIConnectionParameter) {
+  public MistralAIChatConnection(MistralAIConnectionParameter mistralAIConnectionParameter) {
     this.mistralAIConnectionParameter = mistralAIConnectionParameter;
   }
 

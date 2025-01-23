@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 
 import static java.time.Duration.ofSeconds;
 
-public class HuggingFaceConnection implements Connection {
+public class HuggingFaceChatConnection implements ChatConnection {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(HuggingFaceConnection.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(HuggingFaceChatConnection.class);
   private ChatLanguageModel model;
   private final HuggingFaceConnectionParameter huggingFaceConnectionParameter;
 
-  public HuggingFaceConnection(HuggingFaceConnectionParameter huggingFaceConnectionParameter) {
+  public HuggingFaceChatConnection(HuggingFaceConnectionParameter huggingFaceConnectionParameter) {
     this.huggingFaceConnectionParameter = huggingFaceConnectionParameter;
   }
 

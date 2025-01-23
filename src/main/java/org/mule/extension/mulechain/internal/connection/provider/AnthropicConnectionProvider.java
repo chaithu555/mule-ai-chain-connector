@@ -1,6 +1,6 @@
 package org.mule.extension.mulechain.internal.connection.provider;
 
-import org.mule.extension.mulechain.internal.connection.AnthropicConnection;
+import org.mule.extension.mulechain.internal.connection.AnthropicChatConnection;
 import org.mule.extension.mulechain.internal.connection.paramter.AnthropicConnectionParameter;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @Alias("anthropic")
 @DisplayName("Anthropic")
-public class AnthropicConnectionProvider implements CachedConnectionProvider<AnthropicConnection> {
+public class AnthropicConnectionProvider implements CachedConnectionProvider<AnthropicChatConnection> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AnthropicConnectionProvider.class);
 
@@ -21,9 +21,9 @@ public class AnthropicConnectionProvider implements CachedConnectionProvider<Ant
   private AnthropicConnectionParameter anthropicConnectionParameter;
 
   @Override
-  public AnthropicConnection connect() throws ConnectionException {
+  public AnthropicChatConnection connect() throws ConnectionException {
     try {
-      AnthropicConnection anthropicConnection = new AnthropicConnection(anthropicConnectionParameter);
+      AnthropicChatConnection anthropicConnection = new AnthropicChatConnection(anthropicConnectionParameter);
       anthropicConnection.connect();
       return anthropicConnection;
     } catch (ConnectionException e) {
@@ -34,7 +34,7 @@ public class AnthropicConnectionProvider implements CachedConnectionProvider<Ant
   }
 
   @Override
-  public void disconnect(AnthropicConnection anthropicConnection) {
+  public void disconnect(AnthropicChatConnection anthropicConnection) {
     try {
       anthropicConnection.disconnect();
     } catch (Exception e) {
@@ -43,7 +43,7 @@ public class AnthropicConnectionProvider implements CachedConnectionProvider<Ant
   }
 
   @Override
-  public ConnectionValidationResult validate(AnthropicConnection anthropicConnection) {
+  public ConnectionValidationResult validate(AnthropicChatConnection anthropicConnection) {
     try {
       if (anthropicConnection.isValid()) {
         return ConnectionValidationResult.success();

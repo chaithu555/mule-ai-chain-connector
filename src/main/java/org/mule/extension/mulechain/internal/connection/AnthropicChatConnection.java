@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 
 import static java.time.Duration.ofSeconds;
 
-public class AnthropicConnection implements Connection {
+public class AnthropicChatConnection implements ChatConnection {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(AnthropicConnection.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(AnthropicChatConnection.class);
   private ChatLanguageModel model;
   private final AnthropicConnectionParameter anthropicConnectionParameter;
 
-  public AnthropicConnection(AnthropicConnectionParameter anthropicConnectionParameter) {
+  public AnthropicChatConnection(AnthropicConnectionParameter anthropicConnectionParameter) {
     this.anthropicConnectionParameter = anthropicConnectionParameter;
   }
 

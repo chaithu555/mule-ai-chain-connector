@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 
 import static java.time.Duration.ofSeconds;
 
-public class OpenAIConnection implements Connection {
+public class OpenAIChatConnection implements ChatConnection {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(OpenAIConnection.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(OpenAIChatConnection.class);
   private ChatLanguageModel model;
   private final OpenAIConnectionParameter openAIConnectionParameter;
 
-  public OpenAIConnection(OpenAIConnectionParameter openAIConnectionParameter) {
+  public OpenAIChatConnection(OpenAIConnectionParameter openAIConnectionParameter) {
     this.openAIConnectionParameter = openAIConnectionParameter;
   }
 

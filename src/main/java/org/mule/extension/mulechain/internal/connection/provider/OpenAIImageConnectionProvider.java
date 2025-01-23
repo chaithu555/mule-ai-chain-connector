@@ -1,7 +1,7 @@
 package org.mule.extension.mulechain.internal.connection.provider;
 
-import org.mule.extension.mulechain.internal.connection.OpenAIChatConnection;
-import org.mule.extension.mulechain.internal.connection.paramter.OpenAIConnectionParameter;
+import org.mule.extension.mulechain.internal.connection.OpenAIImageConnection;
+import org.mule.extension.mulechain.internal.connection.paramter.OpenAIImageConnectionParameter;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
 import org.mule.runtime.api.connection.ConnectionValidationResult;
@@ -11,21 +11,21 @@ import org.mule.runtime.extension.api.annotation.param.display.DisplayName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Alias("openAI")
-@DisplayName("OpenAI")
-public class OpenAIConnectionProvider implements CachedConnectionProvider<OpenAIChatConnection> {
+@Alias("openAIImage")
+@DisplayName("OpenAI Image")
+public class OpenAIImageConnectionProvider implements CachedConnectionProvider<OpenAIImageConnection> {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(OpenAIConnectionProvider.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(OpenAIImageConnectionProvider.class);
 
   @ParameterGroup(name = ParameterGroup.CONNECTION)
-  private OpenAIConnectionParameter openAIConnectionParameter;
+  private OpenAIImageConnectionParameter openAIImageConnectionParameter;
 
   @Override
-  public OpenAIChatConnection connect() throws ConnectionException {
+  public OpenAIImageConnection connect() throws ConnectionException {
     try {
-      OpenAIChatConnection openAIConnection = new OpenAIChatConnection(openAIConnectionParameter);
-      openAIConnection.connect();
-      return openAIConnection;
+      OpenAIImageConnection openAIImageConnection = new OpenAIImageConnection(openAIImageConnectionParameter);
+      openAIImageConnection.connect();
+      return openAIImageConnection;
     } catch (ConnectionException e) {
       throw e;
     } catch (Exception e) {
@@ -34,18 +34,18 @@ public class OpenAIConnectionProvider implements CachedConnectionProvider<OpenAI
   }
 
   @Override
-  public void disconnect(OpenAIChatConnection openAIConnection) {
+  public void disconnect(OpenAIImageConnection openAIImageConnection) {
     try {
-      openAIConnection.disconnect();
+      openAIImageConnection.disconnect();
     } catch (Exception e) {
       LOGGER.error("Failed to close connection", e);
     }
   }
 
   @Override
-  public ConnectionValidationResult validate(OpenAIChatConnection openAIConnection) {
+  public ConnectionValidationResult validate(OpenAIImageConnection openAIImageConnection) {
     try {
-      if (openAIConnection.isValid()) {
+      if (openAIImageConnection.isValid()) {
         return ConnectionValidationResult.success();
       } else {
         return ConnectionValidationResult.failure("Open AI Connection Invalid", null);

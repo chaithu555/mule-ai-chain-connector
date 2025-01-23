@@ -9,14 +9,14 @@ import org.slf4j.LoggerFactory;
 
 import static java.time.Duration.ofSeconds;
 
-public class GroqAIConnection implements Connection {
+public class GroqAIChatConnection implements ChatConnection {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(GroqAIConnection.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(GroqAIChatConnection.class);
 
   private ChatLanguageModel model;
   private final GroqAIConnectionParameter groqAIConnectionParameter;
 
-  public GroqAIConnection(GroqAIConnectionParameter groqAIConnectionParameter) {
+  public GroqAIChatConnection(GroqAIConnectionParameter groqAIConnectionParameter) {
     this.groqAIConnectionParameter = groqAIConnectionParameter;
   }
 
