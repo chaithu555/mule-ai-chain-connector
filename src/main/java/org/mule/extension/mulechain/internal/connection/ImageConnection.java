@@ -2,10 +2,9 @@ package org.mule.extension.mulechain.internal.connection;
 
 import dev.langchain4j.model.image.ImageModel;
 
-public interface ImageConnection extends Connection {
+public interface ImageConnection extends Connection<ImageModel> {
 
-  ImageModel getModel();
-
+  @Override
   default boolean testConnection(ImageModel model) {
     if (model != null) {
       model.generate("Generate Happy Penguin");

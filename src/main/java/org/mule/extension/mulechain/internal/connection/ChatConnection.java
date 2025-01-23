@@ -5,10 +5,9 @@ import dev.langchain4j.service.AiServices;
 import org.mule.extension.mulechain.internal.connection.util.Assistant;
 import org.mule.runtime.api.connection.ConnectionException;
 
-public interface ChatConnection extends Connection {
+public interface ChatConnection extends Connection<ChatLanguageModel> {
 
-  ChatLanguageModel getModel();
-
+  @Override
   default boolean testConnection(ChatLanguageModel model) {
     if (model != null) {
       Assistant assistant = AiServices.create(Assistant.class, model);
