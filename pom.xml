@@ -82,6 +82,7 @@
 				<version>${munit.extensions.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<minMuleVersionConfig>CONNECTOR</minMuleVersionConfig>
 					<argLines>
 						<argLine>
 							-javaagent:${settings.localRepository}/org/jacoco/org.jacoco.agent/${jacoco.version}/org.jacoco.agent-${jacoco.version}-runtime.jar=destfile=${session.executionRootDirectory}/target/jacoco.exec,includes=org/mule/extension/mulechain/**
