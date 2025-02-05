@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mulesoft.connectors</groupId>
 	<artifactId>mule4-aichain-connector</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>mule-extension</packaging>
 	<name>MuleSoft AI Chain Connector - Mule 4</name>
 
@@ -82,6 +82,7 @@
 				<version>${munit.extensions.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<minMuleVersionConfig>CONNECTOR</minMuleVersionConfig>
 					<argLines>
 						<argLine>
 							-javaagent:${settings.localRepository}/org/jacoco/org.jacoco.agent/${jacoco.version}/org.jacoco.agent-${jacoco.version}-runtime.jar=destfile=${session.executionRootDirectory}/target/jacoco.exec,includes=org/mule/extension/mulechain/**
