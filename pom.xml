@@ -17,6 +17,7 @@
 	
     <properties>
         <muleJavaEeBomVersion>4.6.0</muleJavaEeBomVersion>
+		<mule.version>4.6.9</mule.version>
 		<formatterConfigPath>formatter.xml</formatterConfigPath>
 		<javaFormatter.plugin.version>2.0.1</javaFormatter.plugin.version>
 		<formatterGoal>validate</formatterGoal>
