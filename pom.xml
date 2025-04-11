@@ -83,8 +83,8 @@
 		<munit.extensions.maven.plugin.version>1.2.0</munit.extensions.maven.plugin.version>
 		<jacoco.version>0.8.12</jacoco.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
-	     <maven.compiler.source>17</maven.compiler.source>
-	    <maven.compiler.target>17</maven.compiler.target>
+	     <maven.compiler.source>1.8</maven.compiler.source>
+	   <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 	<build>
@@ -228,15 +228,15 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-compiler-plugin</artifactId>
-	            <version>3.11.0</version> <!-- Safe version that supports Java 17 -->
-	            <configuration>
-	                <source>${maven.compiler.source}</source>
-	                <target>${maven.compiler.target}</target>
-	            </configuration>
-	        </plugin>
+				<plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-compiler-plugin</artifactId>
+	    <version>3.8.1</version> <!-- Good for Java 8 -->
+	    <configuration>
+	        <source>${maven.compiler.source}</source>
+	        <target>${maven.compiler.target}</target>
+	    </configuration>
+	</plugin>
 		</plugins>
 	</build>
 
